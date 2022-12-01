@@ -27,6 +27,8 @@ Eval results for model: last_checkpoint
 
 ## Crack Dataset
 
-```python train.py models/focalclick/hrnet18s_S1_crack.py --cpu --workers=4 --batch-size=64 --exp-name=hrnet18s_S1_crack```
+```python train.py models/focalclick/hrnet18s_S1_crack.py --ngpus=1 --workers=0 --batch-size=64 --exp-name=hrnet18s_S1_crack```
 
 1. Try\Except в train - не дает дебажить
+2. Нет EarlyStopping - на задаче с трещинами уже на 10 эпохе ошибка почти не падает
+3. Имена датасетов - лучше было бы добваить какой-нибудь Enum class с вариантами

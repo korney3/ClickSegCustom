@@ -75,7 +75,7 @@ def get_dataset(dataset_name, cfg):
         dataset = ZurichDataset(cfg.ZURICH_PATH)
     elif dataset_name == 'HUMAN':
         dataset = HumanDataset(cfg.HUMAN_PATH)
-    elif dataset_name == 'Crack':
+    elif dataset_name == 'CRACK':
         dataset = CrackDataset(cfg.CRACK_PATH)
 
     else:
