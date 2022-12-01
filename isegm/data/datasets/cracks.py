@@ -21,14 +21,16 @@ class CrackDataset(ISDataset):
         self._insts_path = self.dataset_path / split / masks_dir_name
 
         self.dataset_samples = [x.name for x in sorted(self._images_path.glob('*.*'))]
-        self._masks_paths = {x.stem: x for x in self._insts_path.glob('*.*')}
+        self._masks_paths = {x.stem.split(".")[0]: x for x in self._insts_path.glob('*.*')}
+
+
 
     def get_sample(self, index) -> DSample:
         image_name = self.dataset_samples[index]
 
         prefix = image_name.split(".")[0]
         image_path = str(self._images_path / image_name)
-        mask_path = str(self._masks_paths[f"{prefix}"])
+        mask_path = str(self._masks_paths[prefix])
         # mask_path = str(self._masks_paths[f"{prefix}_gt_invGray"])
 
         image = cv2.imread(image_path)
@@ -36,6 +38,6 @@ class CrackDataset(ISDataset):
         instances_mask = cv2.imread(mask_path)[:, :, 0].astype(np.int32)
         instances_mask[instances_mask <= 128] = -1
         instances_mask[instances_mask > 128] = 1
-        resized = cv2.resize(image, (instances_mask.shape[1], instances_mask.shape[0]))
+        # resized = cv2.resize(image, (instances_mask.shape[1], instances_mask.shape[0]))
 
-        return DSample(resized, instances_mask, objects_ids=[1], ignore_ids=[-1], sample_id=index)
+        return DSample(image, instances_mask, objects_ids=[1], ignore_ids=[-1], sample_id=index)

@@ -47,9 +47,9 @@ class AlignedAugmentator:
         x2 = y1 + W
         
         image_crop = image[y1:y2,x1:x2,:]
-        image_crop = cv2.resize(image_crop, self.target_size)
+        image_crop = cv2.resize(image_crop, tuple(self.target_size))
         mask_crop = mask[y1:y2,x1:x2,:].astype(np.uint8)
-        mask_crop = (cv2.resize(mask_crop, self.target_size)).astype(np.int32)
+        mask_crop = (cv2.resize(mask_crop, tuple(self.target_size))).astype(np.int32)
         if len(mask_crop.shape) == 2:
             mask_crop = np.expand_dims(mask_crop,-1)
         

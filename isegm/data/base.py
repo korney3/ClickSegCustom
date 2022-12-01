@@ -34,7 +34,7 @@ class ISDataset(torch.utils.data.dataset.Dataset):
 
     def __getitem__(self, index):
         while(1):
-            try:
+            # try:
                 if self.samples_precomputed_scores is not None:
                     index = np.random.choice(self.samples_precomputed_scores['indices'],
                                             p=self.samples_precomputed_scores['probs'])
@@ -116,8 +116,8 @@ class ISDataset(torch.utils.data.dataset.Dataset):
                         return output
                     else:
                         index = np.random.randint(len(self.dataset_samples)-1)
-            except:
-                index = np.random.randint(len(self.dataset_samples)-1)
+            # except:
+            #     index = np.random.randint(len(self.dataset_samples)-1)
 
 
     def remove_small_regions(self,mask):
