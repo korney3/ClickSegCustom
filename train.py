@@ -47,6 +47,8 @@ def parse_args():
 
     parser.add_argument('--gpus', type=str, default='', required=False,
                         help='Ids of used GPUs. You should use either this argument or "--ngpus".')
+    parser.add_argument('--cpu', action='store_true', default=False,
+                              help='Use only CPU for inference.')
 
     parser.add_argument('--resume-exp', type=str, default=None,
                         help='The prefix of the name of the experiment to be continued. '

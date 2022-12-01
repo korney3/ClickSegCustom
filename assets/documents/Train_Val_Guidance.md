@@ -3,6 +3,12 @@
 
 ## Evaluate Trained Models
 Find a templet in ./trainval_scripts/val_xxx.sh, for example: ./trainval_scripts/val_focalclickB0_S1_cclvs.sh
+
+```
+python scripts/evaluate_model.py FocalClick --model_dir=./experiments/focalclick/hr18ss1/ --checkpoint=last_checkpoint --infer-size=256 --datasets=D585_ZERO --n-clicks=20 --target-iou=0.90 --thresh=0.50 --vis
+```
+
+
 ```
 python scripts/evaluate_model.py FocalClick\
   --model_dir=./experiments/focalclick/segformerB0_S1_cclvs/000_segformerB0_S1_cclvs/checkpoints/\
