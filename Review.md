@@ -29,6 +29,12 @@ Eval results for model: last_checkpoint
 
 ```python train.py models/focalclick/hrnet18s_S1_crack.py --ngpus=1 --workers=0 --batch-size=64 --exp-name=hrnet18s_S1_crack```
 
+|  Pipeline   |  Dataset  | NoC@80% | NoC@85% | NoC@90% |>=20@85% |>=20@90% | SPC,s |  Time   |
+|-------------|-----------|---------|---------|---------|---------|---------|-------|---------|
+| FocalClick  |   CRACK   |  16.20  |  17.27  |  18.35  |  1386   |  1491   | 0.162 | 1:23:54 |
+
+
+
 1. Try\Except в train - не дает дебажить
 2. Нет EarlyStopping - на задаче с трещинами уже на 10 эпохе ошибка почти не падает
 3. Имена датасетов - лучше было бы добваить какой-нибудь Enum class с вариантами
