@@ -12,7 +12,7 @@ from isegm.data.sample import DSample
 
 class CrackDataset(ISDataset):
     def __init__(self, dataset_path,
-                 images_dir_name='images', masks_dir_name='masks', split="Test",
+                 images_dir_name='images', masks_dir_name='masks', split="test",
                  **kwargs):
         super(CrackDataset, self).__init__(**kwargs)
         self.name = 'CrackDataset'
